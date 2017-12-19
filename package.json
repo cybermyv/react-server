@@ -1,0 +1,24 @@
+{
+    "name": "server-side-reactapp",
+    "version": "0.1.0",
+    "description": "серверная часть ",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon --exec babel-node server.js"
+    },
+    "author": "Mironov Y",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "express": "^4.15.4",
+        "sqlite3": "^3.1.9"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-preset-stage-1": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "babel-preset-stage-3": "^6.24.1"
+    }
+}
