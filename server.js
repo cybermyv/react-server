@@ -11,17 +11,9 @@ app.use(express.static(path));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//--
-
-// app.get('/', async (req, res) => res.send('Hello World!'));
-
-
-//--
-
 app.post('/api/signin', (req, res)=>{
-  dbEngine.validationSigIn(req.body.email, req.body.password, (err, rec) => {
-     //if(err) res.send('failure');
-     if (rec === 'failure') {res.status(401).send('ХХХХ')}
+  dbEngine.validationSigIn(req.body.username, req.body.password, (err, rec) => {
+     if (rec === 'failure') {res.status(401).send('Ошибка авторизации')}
       else
      {  return res.json(rec); }
      
