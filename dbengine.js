@@ -22,10 +22,10 @@ exports.validationSigIn = (login, password, callback) => {
     // console.log(token);
     db.get(tQ,[login, password], (err, row)=>{
       if(!err) {
-        
-      row.token = uuid.v4();;
-      console.log(row);
-     
+      console.log(row);  
+
+      if (row) row.token = uuid.v4();;
+      
           return row
             ? callback(null, row)
             : callback(null, 'failure')};
