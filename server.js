@@ -12,10 +12,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/signin', (req, res)=>{
-  dbEngine.validationSigIn(req.body.username, req.body.password, (err, rec) => {
-     if (rec === 'failure') {res.status(401).send('Ошибка авторизации')}
+
+  dbEngine.validationSigIn(req.body.username, req.body.password,
+     (err, rec) => {
+      
+      console.log(rec);
+
+     if (rec !== 'failure'){  
+      
+        res.json(rec);
+      } 
       else
-     {  return res.json(rec); }
+     
+      {//res.status(401).send('Ошибка авторизации');
+      res.status(401).json( { error: 'Ошибка авторизации' })}
+     
      
    })
 });

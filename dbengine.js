@@ -16,13 +16,13 @@ exports.sigup = callback => {
 };
 
 exports.validationSigIn = (login, password, callback) => {
-   // console.log('validationSigIn ', login, password);
+   
     let tQ = 'select * from users where login = ? and pass = ?';
-    //const token = uuid.v4();
-    // console.log(token);
+   
     db.get(tQ,[login, password], (err, row)=>{
       if(!err) {
-      console.log(row);  
+   
+        console.log(row);  
 
       if (row) row.token = uuid.v4();;
       
