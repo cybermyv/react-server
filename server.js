@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import dbEngine from "./dbengine";
+import dbEngine from './dbengine';
+import dbfParser from './dbfparser';
 
 const app = express();
 
@@ -24,13 +25,18 @@ app.post('/api/signin', (req, res)=>{
       } 
       else
      
-      {//res.status(401).send('Ошибка авторизации');
+      {
       res.status(401).json( { error: 'Ошибка авторизации' })}
      
      
    })
 });
 
+app.get('/api/main', (rec, res)=>{
+  dbfParser.getAllData(rec=>{
+    return res.json(rec)
+  });
+});
 
 const server = app.listen(3000, () => {
   const { address, port } = server.address();
