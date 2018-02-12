@@ -8,32 +8,25 @@ const app = express();
 const path = __dirname + '/app/public/';
 
 app.use(express.static(path));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/api/signin', (req, res)=>{
-
+app.post('/api/signin', (req, res) => {
   dbEngine.validationSigIn(req.body.username, req.body.password,
-     (err, rec) => {
-      
+    (err, rec) => {
       console.log(rec);
-
-     if (rec !== 'failure'){  
-      
+      if (rec !== 'failure') {
         res.json(rec);
-      } 
-      else
-     
-      {
-      res.status(401).json( { error: 'Ошибка авторизации' })}
-     
-     
-   })
+      }
+      else {
+        res.status(401).json({ error: 'Ошибка авторизации' })
+      }
+      // res.json(rec);
+    })
 });
 
-app.get('/api/main', (rec, res)=>{
-  dbfParser.getAllData(rec=>{
+app.get('/api/main', (rec, res) => {
+  dbfParser.getAllData(rec => {
     return res.json(rec)
   });
 });

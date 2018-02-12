@@ -16,21 +16,22 @@ exports.sigup = callback => {
 };
 
 exports.validationSigIn = (login, password, callback) => {
-   
-    let tQ = 'select * from users where login = ? and pass = ?';
-   
-    db.get(tQ,[login, password], (err, row)=>{
-      if(!err) {
-   
-        console.log(row);  
+
+  let tQ = 'select * from users where login = ? and pass = ?';
+
+  db.get(tQ, [login, password], (err, row) => {
+    if (!err) {
+
+      //   console.log(row);  
 
       if (row) row.token = uuid.v4();;
-      
-          return row
-            ? callback(null, row)
-            : callback(null, 'failure')};
-    });
 
-    //db.close();
-  
+      return row
+        ? callback(null, row)
+        : callback(null, 'failure')
+    };
+  });
+
+  //db.close();
+
 };
