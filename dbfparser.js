@@ -13,6 +13,6 @@ exports.getAllData = callback => {
     a.push(parsedDBF);
 
     //console.log(a)
-    callback(a);
+    callback(parsedDBF);
 }
 

@@ -26,6 +26,7 @@ app.post('/api/signin', (req, res) => {
 });
 
 app.get('/api/main', (rec, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   dbfParser.getAllData(rec => {
     return res.json(rec)
   });
